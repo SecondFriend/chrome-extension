@@ -23,16 +23,26 @@ define([
     'template' :
 
       // This is the template
-      '<div class="state-loading">'+
-      '<span id="loading-message"> <%= loadingMessage %> </span>'+
+      // Loading state
+      '<div id="loading">'+
       '</div>'+
-      '<div class="state-loaded">'+
-      '<div class="grownup-bio">'+
-      '<img id="grownup-photo" src="<%= grownupPhoto %>" />'+
-      '<span id="grownup-name"> <%= grownupName %> </span>'+
-      '</div>'+
-      '<div id="chatClient">'+
-      '</div>'+
+
+      // Loaded state
+      '<div id="loaded">'+
+        '<header>'+
+        '<img class="thumbnail" src="fixtures/images/grownup.png" />'+
+        '<div class="info">'+
+        '<span class="heading">You are now talking to</span>'+
+        '<span class="name">Camille Waddington</span>'+
+        '<ul class="nav">'+
+          '<li><span class="button">Profile</span></li>'+
+          '<li><span class="button">Call</span></li>'+
+        '</ul>'+
+        '</div>'+
+
+      '</header>'+
+        '<div id="chatClient">'+
+        '</div>'+
       '</div>',
 
     'initialize'  : function () {

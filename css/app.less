@@ -1,66 +1,130 @@
-body {
-  margin: 0; padding: 0;
+@import 'normalize';
 
-  width: 300px;
-  height: 400px;
-  display: table;
-  background: #cbe3f6;
+html, body {
+   background-image: url('gfx/app-background.png');
 
-  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  min-width: 400px;
+  min-height: 500px;
 }
 
 #Chat {
+
+  height: 100%;
+  width: 100%;
+
   // Loading state
   &.loading {
-    .state-loading { display: block; }
-    .state-loaded { display: none; }
+    #loading { display: block; }
+    #loaded { display: none; }
   }
 
   // Loaded state
   &.loaded {
-    .state-loading { display: none; }
-    .state-loaded { display: block; }
+    #loading { display: none; }
+    #loaded { display: block; }
   }
 
-  .state-loading {
-    width: 300px;
-    height: 400px;
-    text-align: center;
-    vertical-align: middle;
-    display: table-cell;
+  #loading {
+    width: 100%;
+    height: 100%;
+    display: block;
     background: url('gfx/loading.gif') no-repeat center;
   }
 
-  .grownup-bio {
+  header {
+    background: url('gfx/header-background.png') repeat-x;
+    color: #1a4060;
     position: absolute;
     top: 0;
-    z-index: 1001;
-
     width: 100%;
-    height: 90px;
-    background: url('gfx/header-background.png');
+    z-index: 1001;
+    height: 101px;
+    font: normal 9px Helvetica, Arial, sans-serif;
+    .info {
+      padding: 25px 0 0 85px;
+    }
+    .heading {
+      display: block;
+      font-size: 10px;
+    }
+    .thumbnail {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      width: 60px;
+      border: 1px solid #2a5981;
+    }
+    .name {
+      font: normal 16px/20px Helvetica, Arial, sans-serif;
+      color: #fff;
+    }
+    .nav {
+      margin: 0; padding: 0;
+      list-style-type: none;
+      li {
+        display: inline;
+      }
+    }
   }
 
+  // Chat history
   #history {
-    margin: 0;
-    padding: 0;
-
-    width: 100%;
+    background: #f7f7f7;
     position: absolute;
     bottom: 0;
-    padding-bottom: 30px;
-
+    width: 100%;
+    list-style-type: none;
+    border-top: 1px solid #bbb;
+    margin: 0 0 68px; padding: 0;
     li {
-      padding: 3px; margin: 0;
-      border-top: 1px solid #eee;
+      position: relative;
+      border-bottom: 1px solid #bbb;
+      padding: 5px 60px 5px 5px;
+      .time {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        font-size: 10px;
+      }
+      .author {
+        font-weight: bold;
+        &:after {
+          content:": ";
+        }
+      }
+    }
+
+  }
+
+  #input-wrapper {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 68px;
+    .nav {
+      display: block;
+      height: 30px;
+      background: url('gfx/header-background.png') bottom repeat-x;
       list-style-type: none;
+      margin: 0; padding: 0;
+      li { display: inline; }
     }
   }
 
   #input {
-    position: absolute;
     bottom: 0;
-    height: 30px;
-    background: #f00;
+    display: block;
+    overflow: hidden;
+    padding-right: 20px;
+    input {
+      width: 100%;
+      border: none;
+      padding: 10px;
+      margin: 0;
+      outline: none;
+    }
   }
+
 }

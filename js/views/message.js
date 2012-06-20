@@ -8,6 +8,7 @@ define([
 
   var view = Backbone.View.extend({
     'tagName' : 'li',
+    'className' : 'ui-li ui-body-c ui-li-static',
     'events'  : {},
     'template': _.template($('#tpl-chat-message').html()),
 

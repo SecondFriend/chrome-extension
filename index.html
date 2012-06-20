@@ -9,15 +9,22 @@
 
   <!-- Templates -->
   <script type="text/template" id="tpl-chat-history">
-    <ul id="history">
-      <li>Jan</li>
-    </ul>
-    <input type="text" id="input" />
+    <ul id="history"></ul>
+    <div id="input-wrapper">
+      <div id="input">
+        <input id="chat-input" placeholder="Start chatting here..." type="text" />
+      </div>
+      <ul class="nav">
+        <li><span id="button-close" class="button">Close chat</span></li>
+        <li><span id="button-purge" class="button">Close chat &amp; purge data</span></li>
+      </ul>
+    </div>
   </script>
   <script type="text/template" id="tpl-chat-message">
-    <span class="message">
-      <span class="timestamp"><%=message.timestamp%></span>
-      <span class="text"><%=message.payload%></span>
+    <span class="time"><%=message.timestamp%></span>
+    <span class="body">
+      <span class="author">You</span>
+      <span class="message"><%= message.payload %></span>
     </span>
   </script>
 </html>

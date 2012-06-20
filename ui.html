@@ -1,47 +1,54 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html lang="en-US">
 <head>
-  <title>My Page</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
-  <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-  <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/app.css" title="app" type="text/css" media="screen" charset="utf-8">
+  <title></title>
 </head>
 <body>
+  <div id="Chat" class="loaded">
 
-  <div data-role="page">
+    <div id="loading">
+    </div>
+    <div id="loaded">
 
-    <div data-role="header" data-theme="b" data-position="fixed">
-      <h1>Chat with Camille Waddington</h1>
-    </div><!-- /header -->
+      <header>
+        <img class="thumbnail" src="fixtures/images/grownup.png" />
+        <div class="info">
+        <span class="heading">You are now talking to</span>
+        <span class="name">Camille Waddington</span>
+        </div>
 
-    <div data-role="content">
+      </header>
 
-      <ul data-role="listview" class="ui-listview">
-
-        <li class="ui-li ui-body-c">
-          <p class="ui-li-aside ui-li-desc">
-          <strong>9:18</strong>AM
-          </p>
-          <h3 class="ui-li-heading"></h3>
-          <p class="ui-li-desc">
-          <strong>You</strong>
-          </p>
-          <p >In preparation for the upcoming conference in Boston, we need to start gathering a list of sponsors and speakers.</p>
+      <ul id="history">
+        <li>
+          <span class="time">21:07</span>
+          <span class="body">
+            <span class="author">You</span>
+            <span class="message">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
+          </span>
         </li>
-
+        <li>
+          <span class="time">21:06</span>
+          <span class="body">
+            <span class="author">Camille Weddington</span>
+            <span class="message">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
+          </span>
+        </li>
       </ul>
 
-    </div><!-- /content -->
-
-    <div data-role="footer" class="ui-bar" data-position="fixed">
-      <div data-role="controlgroup" data-type="horizontal">
-        <a href="index.html" data-role="button">Logout</a>
-        <a href="index.html" data-role="button">Logout & purge</a>
+      <div id="input-wrapper">
+      <div id="input">
+        <input placeholder="Start chatting here..." type="text" />
       </div>
+      </div>
+
+      <footer>
+      </footer>
+
     </div>
 
-  </div><!-- /page -->
-
+  </div>
 </body>
 </html>
