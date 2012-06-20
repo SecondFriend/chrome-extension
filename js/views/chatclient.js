@@ -69,7 +69,11 @@ define([
                           },
 
               connect    : function() { // CONNECTION ESTABLISHED.
-                             console.log("Connected to channel " + App.get("uuid"));
+                             var uuid = App.get("uuid")
+                             console.log("Connected to channel " + uuid);
+                             jQuery.ajax(Settings.requestURL(uuid, uuid))
+                              .done( function() { console.log("Notification of backend successful"); })
+                              .fail( function() { console.error("Notification of backend failed"); });
                            },
 
               disconnect : function() { // LOST CONNECTION.
