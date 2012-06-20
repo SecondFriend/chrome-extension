@@ -23,15 +23,23 @@ define([
         'template'		:
 			
 			// This is the template
+			// Loading state
 			'<div class="state-loading">'+
 				'<span id="loading-message"> <%= loadingMessage %> </span>'+
 			'</div>'+
+			
+			// Loaded state
 			'<div class="state-loaded">'+
-				'<div class="grownup-bio">'+
-					'<img id="grownup-photo" src="<%= grownupPhoto %>" />'+
-					'<span id="grownup-name"> <%= grownupName %> </span>'+
+				'<div data-role="header" data-theme="b" data-position="fixed">' +
+					'<h1> <%= grownupName %> </h1>' +
 				'</div>'+
 				'<div id="chatClient">'+
+				'</div>'+
+				'<div data-role="footer" class="ui-bar" data-position="fixed">'+
+					'<div data-role="controlgroup" data-type="horizontal">'+
+						'<a href="index.html" data-role="button">Logout</a>'+
+						'<a href="index.html" data-role="button">Logout & purge</a>'+
+					'</div>'+
 				'</div>'+
 			'</div>',
 			

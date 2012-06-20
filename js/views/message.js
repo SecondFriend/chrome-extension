@@ -8,11 +8,12 @@ define([
 	
 	var view = Backbone.View.extend({
 		'tagName'	: 'li',
+		'className'	: 'ui-li ui-body-c ui-li-static',
 		'events'	: {},
 		'template'		:
 			
 			// This is the template
-			'<span class="message"><%= message %></span>',
+			'<p class="ui-li-aside ui-li-desc"><strong>9:18</strong>AM</p><h3 class="ui-li-heading"></h3><p class="ui-li-desc"><strong>You</strong></p><p><%= message %></p>',
 			
 		'initialize': function(){
 
