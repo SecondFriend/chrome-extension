@@ -9,11 +9,12 @@ define([
     'underscore',
     'backbone',
     'jquery',
-    'pubnub',
+    'settings',
     'views/message',
-    'collections/messages'
+    'collections/messages',
+    'pubnub'
 
-    ], function ( _, Backbone, jQuery, MessageView, MessageCollection ) {
+    ], function ( _, Backbone, jQuery, Settings, MessageView, MessageCollection ) {
 
       "use strict";
 
@@ -30,7 +31,9 @@ define([
 
         'initialize'  : function () {
 
-          // This and that…
+            console.log( window.PUBNUB, PUBNUB );
+            
+          // This and that
           var root = this;
           _.bindAll( this, 'messageAdd', 'messageAddAll' );
 
@@ -40,11 +43,13 @@ define([
           App.ChatHistory.bind('add'    , root.messageAdd   );
           App.ChatHistory.bind('reset'  , root.messageAddAll  );
           App.ChatHistory.bind('remove' , root.messageRemove  );
-
-          var pubnub = PUBNUB(Settings.PUBNUB);
+          
+          
+          
+         // var pubnub = new PUBNUB(Settings.PUBNUB);
 
           // Listen to PUBNUB and do something like
-          pubnub.subscribe({
+          /*pubnub.subscribe({
             channel  : 'my_channel',
             callback : function(message) {
               App.ChatHistory.add({
@@ -67,7 +72,7 @@ define([
                 'message' : "Successfully reconnected!"
               });
             }
-          });
+          });*/
 
           // Fetch history from localstorage
           setTimeout(function(){
@@ -91,14 +96,14 @@ define([
           if( event && event.keyCode === 13 ){
 
             // Send to PUBNUB
-            PubNub.publish({
+            PUBNUB.publish({
               channel  : "hello_world",
               message  : "Hi.",
               callback : function(response) {
                 App.ChatHistory.add({
                   'message' : response
                 });
-              }
+             }
             })
           }
 
