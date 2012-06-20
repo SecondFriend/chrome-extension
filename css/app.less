@@ -1,7 +1,7 @@
 @import 'normalize';
 
 html, body {
-	 background-image: -webkit-radial-gradient(#67abd5 0%, #c1e7fd 100%); /* New WebKit syntax */  
+	 background-image: url('gfx/app-background.png'); 
 
 	height: 100%;
 	width: 100%;
@@ -34,15 +34,16 @@ html, body {
 	}
 	
 	header {
-		background: -webkit-linear-gradient(#4c83ac 0%, #205d88 100%);
-		color: #fff;
+		background: url('gfx/header-background.png') repeat-x;
+		color: #1a4060;
 		position: absolute;
 		top: 0;
 		width: 100%;
 		z-index: 1001;
-		//border-bottom: 1px solid #d7871f;
+		height: 101px;
+		font: normal 9px Helvetica, Arial, sans-serif;
 		.info {
-			padding: 10px;
+			padding: 25px 0 0 85px;
 		}
 		.heading {
 			display: block;
@@ -50,13 +51,14 @@ html, body {
 		}
 		.thumbnail {
 			position: absolute;
-			right: 10px;
+			left: 10px;
 			top: 10px;
 			width: 60px;
-			border: 1px solid #bbb;
+			border: 1px solid #2a5981;
 		}
 		.name {
-			font: normal 22px/30px Helvetica, Arial, sans-serif;
+			font: normal 16px/20px Helvetica, Arial, sans-serif;
+			color: #fff;
 		}
 		.nav {
 			margin: 0; padding: 0;
@@ -84,6 +86,7 @@ html, body {
 				position: absolute;
 				top: 5px;
 				right: 5px;
+				font-size: 10px;
 			}
 			.author {
 				font-weight: bold;
