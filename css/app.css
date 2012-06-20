@@ -379,7 +379,8 @@ table {
 }
 html,
 body {
-  background: #e7e7e7;
+  background-image: -webkit-radial-gradient(#67abd5 0%, #c1e7fd 100%);
+  /* New WebKit syntax */
   height: 100%;
   width: 100%;
   min-width: 400px;
@@ -408,14 +409,15 @@ body {
   background: url('gfx/loading.gif') no-repeat center;
 }
 #Chat header {
-  background: #aaa;
+  background: -webkit-linear-gradient(#4c83ac 0%, #205d88 100%);
+  color: #fff;
   position: absolute;
   top: 0;
   width: 100%;
   z-index: 1001;
 }
 #Chat header .info {
-  padding: 20px;
+  padding: 10px;
 }
 #Chat header .heading {
   display: block;
@@ -423,9 +425,10 @@ body {
 }
 #Chat header .thumbnail {
   position: absolute;
-  right: 20px;
-  top: 20px;
+  right: 10px;
+  top: 10px;
   width: 60px;
+  border: 1px solid #bbb;
 }
 #Chat header .name {
   font: normal 22px/30px Helvetica, Arial, sans-serif;
@@ -439,12 +442,13 @@ body {
   display: inline;
 }
 #Chat #history {
+  background: #f7f7f7;
   position: absolute;
   bottom: 0;
   width: 100%;
   list-style-type: none;
   border-top: 1px solid #bbb;
-  margin: 0 0 38px;
+  margin: 0 0 68px;
   padding: 0;
 }
 #Chat #history li {
@@ -467,11 +471,22 @@ body {
   position: absolute;
   bottom: 0;
   width: 100%;
+  height: 68px;
+}
+#Chat #input-wrapper .nav {
+  display: block;
+  height: 30px;
+  background: url('gfx/header-background.png') bottom repeat-x;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+#Chat #input-wrapper .nav li {
+  display: inline;
 }
 #Chat #input {
   bottom: 0;
   display: block;
-  background: #f00;
   overflow: hidden;
   padding-right: 20px;
 }

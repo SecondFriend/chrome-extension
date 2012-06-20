@@ -24,7 +24,8 @@ define([
         'tagName'   : 'div'   ,
         'events'    : {
 
-          'keypress #chat-input' : 'handleKeypress'
+          'keypress #chat-input' : 'handleKeypress',
+          'click #button-purge' : 'purgeLocalStorage'
 
         }   ,
         'template'    : _.template($('#tpl-chat-history').html()),
@@ -113,7 +114,7 @@ define([
 
           // Render the model
           var view = new MessageView({'model':model});
-          $('ul', '#' + this.id ).append( view.render() );
+          $('#history', '#' + this.id ).append( view.render() );
 
         },
 
@@ -123,7 +124,12 @@ define([
           _.each( data.models, function( model ){
             root.messageAdd( model );
           });
-        }
+        },
+        
+        'purgeLocalStorage' : function(){
+	      window.localStorage.clear();
+	      window.close();  
+        },
 
       });
 
