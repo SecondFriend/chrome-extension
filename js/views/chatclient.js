@@ -17,18 +17,13 @@ define([
   "use strict";
 
   var view = Backbone.View.extend({
+
     'id'      : 'ChatClient',
     'tagName' : 'div',
     'events'  : {
       'keypress #input' : 'handleKeypress'
     },
-    'template':
-
-    // This is the template
-    '<ul id="history">'+
-    '<li>Jan</li>'+
-    '</ul>'+
-    '<input type="text" id="input" />',
+    'template': _.template($('#tpl-chat-history').html()),
 
     'initialize'  : function () {
       // This and that?
@@ -57,13 +52,10 @@ define([
     },
 
     'render': function () {
-      var data = {
-        'heading' : 'LOADING'
-      };
-      var html = _.template( this.template, data );
-
       // Append html to view element.
-      $( this.el ).html( html );
+      $( this.el ).html( this.template({
+        'heading' : 'LOADING'
+      }) );
 
       return this.el;
     },
