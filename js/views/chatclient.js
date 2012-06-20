@@ -27,10 +27,16 @@ define([
     },
     'template': _.template($('#tpl-chat-history').html()),
 
+    'fmtTime'     : function(timetoken) {
+      var now = new Date(timetoken/10000);
+      return now.toTimeString();
+      //return now.getHours()+':'+now.getMinutes()+':'+now.getSeconds();
+    },
+
     'initialize'  : function () {
       // This and that?
       var root = this;
-      _.bindAll( this, 'messageAdd', 'messageAddAll' );
+      _.bindAll( this, 'messageAdd', 'messageAddAll', 'fmtTime' );
 
       // Set up storage for chat history
       App.ChatHistory = new MessageCollection();
@@ -93,11 +99,13 @@ define([
 
     'handleKeypress' : function( event ) {
       if( event && event.keyCode === 13 ) {
-        var message = event.srcElement.value
+        var root = this;
         // Send to PUBNUB
-        this.pubnub.publish({
-          channel  : App.get("uuid"),
-          message  : message,
+        root.pubnub.time( function(time) {
+          root.pubnub.publish({
+            channel  : App.get("uuid"),
+            message  : { timestamp: root.fmtTime(time), payload: event.srcElement.value },
+          });
         });
       }
     },

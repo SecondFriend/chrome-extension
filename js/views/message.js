@@ -9,9 +9,7 @@ define([
   var view = Backbone.View.extend({
     'tagName' : 'li',
     'events'  : {},
-    'template'    :
-      // This is the template
-      '<span class="message"><%= message %></span>',
+    'template': _.template($('#tpl-chat-message').html()),
 
     'initialize': function(){
       _.bindAll(this, 'render');
@@ -20,8 +18,7 @@ define([
 
 
     'render' : function(){
-      var html = _.template( this.template, this.model.toJSON() );
-      $( this.el ).html( html ).addClass( this.model.get('type') );
+      $( this.el ).html( this.template(this.model.toJSON()) ).addClass( this.model.get('type') );
 
       return this.el;
     }
