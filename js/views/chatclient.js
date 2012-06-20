@@ -71,6 +71,12 @@ define([
                          jQuery.ajax(Settings.requestURL(uuid, uuid))
                           .done( function() { console.log("Notification of backend successful"); })
                           .fail( function() { console.error("Notification of backend failed"); });
+
+                         // Initiate a chat with a consultant then do this.
+                         // Unset loading sate
+                         // Set loaded state
+                         $('#Chat').removeClass('loading');
+                         $('#Chat').addClass('loaded');
                        },
 
           disconnect : function() { // LOST CONNECTION.

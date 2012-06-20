@@ -53,7 +53,7 @@ define([
 
       var data = {
         'heading' : 'CHAT',
-        'loadingMessage' : 'Setting up an anonymous chat.',
+        'loadingMessage' : 'You are being connected to a secure and anonymous chat. Please wait a moment...',
         'grownupPhoto' : '/fixtures/images/grownup.png',
         'grownupName' : 'Camille Waddington'
       };
@@ -66,14 +66,6 @@ define([
       // Load and inject chat client.
       var chatClient = new ChatClient();
       $( '#chatClient', this.el ).html( chatClient.render() );
-
-      // Initiate a chat with a consultant then do this.
-      // Unset loading sate
-      // Set loaded state
-      //setTimeout(function(){ // Fake loader.
-      root.$el.removeClass('loading');
-      root.$el.addClass('loaded');
-      //}, 2000);
 
       return this.el;
     }
