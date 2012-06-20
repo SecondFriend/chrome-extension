@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Template</title>
-        <link rel="stylesheet" href="css/app.css" type="text/css" media="screen" charset="utf-8">
-        <script data-main="js/bootloader" src="js/libs/require.js"></script>
-    </head>
-    <body></body>
-    
-    <!-- Templates -->
-    <script type="text/template" id="tpl-chat-history">
-      <ul id="history">
-        <li>Jan</li>
-      </ul>
-      <input type="text" id="input" />
-    </script>
+  <head>
+    <title>Template</title>
+    <link rel="stylesheet" href="css/app.css" type="text/css" media="screen" charset="utf-8">
+    <script data-main="js/bootloader" src="js/libs/require.js"></script>
+  </head>
+  <body></body>
+
+  <!-- Templates -->
+  <script type="text/template" id="tpl-chat-history">
+    <ul id="history">
+      <li>Jan</li>
+    </ul>
+    <input type="text" id="input" />
+  </script>
+  <script type="text/template" id="tpl-chat-message">
+    <span class="message">
+      <span class="timestamp"><%=message.timestamp%></span>
+      <span class="text"><%=message.payload%></span>
+    </span>
+  </script>
 </html>
