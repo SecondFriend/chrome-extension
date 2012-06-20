@@ -24,7 +24,7 @@ define([
         'tagName'   : 'div'   ,
         'events'    : {
 
-          'keypress #input' : 'handleKeypress'
+          'keypress #chat-input' : 'handleKeypress'
 
         }   ,
         'template'    : _.template($('#tpl-chat-history').html()),
