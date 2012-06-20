@@ -39,38 +39,54 @@ define([
       App.ChatHistory.bind('reset'  , root.messageAddAll  );
       App.ChatHistory.bind('remove' , root.messageRemove  );
 
-      this.pubnub = PUBNUB.init(Settings.PUBNUB);
+      root.pubnub = PUBNUB.init(Settings.PUBNUB);
 
-      // Listen to PUBNUB and do something like
-      this.pubnub.subscribe({
-        channel  : 'my_channel',
-        callback : function(message) {
-          App.ChatHistory.add({
-            'message' : message
-          });
-        },
-        connect  : function() { // CONNECTION ESTABLISHED.
-          App.ChatHistory.add({
-            'message' : "Successfully connected."
-          });
-        },
-        disconnect : function() { // LOST CONNECTION.
-          App.ChatHistory.add({
-            'message' : "Connection Lost." +
-                         "Will auto-reconnect when Online."
-          });
-        },
-        reconnect  : function() { // CONNECTION RESTORED.
-          App.ChatHistory.add({
-            'message' : "Successfully reconnected!"
-          });
+      // Generate uuid if we don't yet have one
+      root.pubnub.uuid( function(uuid) {
+        if (!App.has("uuid")) {
+          console.log("Generated uuid: "+uuid);
+          App.set({"uuid": uuid});
+          App.save();
         }
-      });
 
-      // Fetch history from localstorage
-      setTimeout(function(){
-        App.ChatHistory.fetch()
-      }, 1);
+        // Subscribe to PUBNUB
+        root.pubnub.subscribe({
+          channel   : App.get("uuid"),
+
+          callback  : function(message) {
+                        App.ChatHistory.add({
+                          'message' : message
+                        });
+                      },
+
+          connect    : function() { // CONNECTION ESTABLISHED.
+                         console.log("Connected to channel " + App.get("uuid"));
+                         App.ChatHistory.add({
+                           'message' : "Successfully connected."
+                         });
+                       },
+
+          disconnect : function() { // LOST CONNECTION.
+                         console.log("Disconnected from channel " + App.get("uuid"));
+                         App.ChatHistory.add({
+                           'message' : "Connection Lost." +
+                           "Will auto-reconnect when Online."
+                         });
+                       },
+
+          reconnect  : function() { // CONNECTION RESTORED.
+                         console.log("Reconnected to channel " + App.get("uuid"));
+                         App.ChatHistory.add({
+                           'message' : "Successfully reconnected!"
+                         });
+                       }
+        });
+
+        // Fetch history from localstorage
+        setTimeout(function(){
+          App.ChatHistory.fetch()
+        }, 1);
+      });
     },
 
     'uninitialize' : function(){
@@ -85,19 +101,14 @@ define([
       return this.el;
     },
 
-    'handleKeypress' : function( event ){
-      if( event && event.keyCode === 13 ){
-        message = event.srcElement.value
+    'handleKeypress' : function( event ) {
+      if( event && event.keyCode === 13 ) {
+        var message = event.srcElement.value
         // Send to PUBNUB
         this.pubnub.publish({
-          channel  : "hello_world",
+          channel  : App.get("uuid"),
           message  : message,
-          callback : function(response) {
-            App.ChatHistory.add({
-              'message' : message
-            });
-          }
-        })
+        });
       }
     },
 
