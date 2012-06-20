@@ -1,0 +1,13 @@
+{
+  "name": "Second Friend",
+  "version": "1.0",
+  "manifest_version": 1,
+  "description": "Your Second Friend on the web.",
+  "browser_action": {
+    "default_icon": "gfx/icon.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "http://www.google.com/"
+  ]
+}
