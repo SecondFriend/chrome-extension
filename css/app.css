@@ -1,0 +1,12 @@
+#Chat.loading .state-loading {
+  display: block;
+}
+#Chat.loading .state-loaded {
+  display: none;
+}
+#Chat .state-loading {
+  display: none;
+}
+#Chat .state-loaded {
+  display: block;
+}
