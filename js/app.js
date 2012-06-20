@@ -13,9 +13,9 @@ define([
 
   return Backbone.Model.extend({
 
-    id        : Settings.NAME,
+    id            : Settings.NAME,
     localStorage  : new Store( Settings.NAME ),
-    defaults    : {},
+    defaults      : {},
 
     initialize: function () {
       // Fetch application settings

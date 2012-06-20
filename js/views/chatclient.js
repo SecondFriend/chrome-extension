@@ -9,6 +9,7 @@ define([
   'underscore',
   'backbone',
   'jquery',
+  'pubnub',
   'views/message',
   'collections/messages'
 
@@ -37,10 +38,33 @@ define([
       App.ChatHistory.bind('reset'  , root.messageAddAll  );
       App.ChatHistory.bind('remove' , root.messageRemove  );
 
+      var pubnub = PUBNUB(Settings.PUBNUB);
+
       // Listen to PUBNUB and do something like
-      /* App.ChatHistory.add({
-         'message' : event.srcElement.value
-         }); */
+      pubnub.subscribe({
+        channel  : 'my_channel',
+        callback : function(message) {
+          App.ChatHistory.add({
+            'message' : message
+          });
+        },
+        connect  : function() { // CONNECTION ESTABLISHED.
+          App.ChatHistory.add({
+            'message' : "Successfully connected."
+          });
+        },
+        disconnect : function() { // LOST CONNECTION.
+          App.ChatHistory.add({
+            'message' : "Connection Lost." +
+                         "Will auto-reconnect when Online."
+          });
+        },
+        reconnect  : function() { // CONNECTION RESTORED.
+          App.ChatHistory.add({
+            'message' : "Successfully reconnected!"
+          });
+        }
+      });
 
       // Fetch history from localstorage
       setTimeout(function(){
@@ -63,9 +87,15 @@ define([
     'handleKeypress' : function( event ){
       if( event && event.keyCode === 13 ){
         // Send to PUBNUB
-        App.ChatHistory.add({
-          'message' : event.srcElement.value
-        });
+        PubNub.publish({
+          channel  : "hello_world",
+          message  : "Hi.",
+          callback : function(response) {
+            App.ChatHistory.add({
+              'message' : response
+            });
+          }
+        })
       }
     },
 
