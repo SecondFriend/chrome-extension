@@ -108,7 +108,11 @@ define([
         root.pubnub.time( function(time) {
           root.pubnub.publish({
             channel  : App.get("uuid"),
-            message  : { timestamp: root.fmtTime(time), payload: event.srcElement.value },
+            message  : {
+              type: 'text',
+              timestamp: root.fmtTime(time),
+              payload: event.srcElement.value
+            },
           });
         });
       }
