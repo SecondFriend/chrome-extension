@@ -8,6 +8,6 @@
     "default_popup": "index.html"
   },
   "permissions": [
-    "http://www.google.com/"
+    "https://super-support.appspot.com/"
   ]
 }

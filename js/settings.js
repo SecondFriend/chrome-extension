@@ -12,6 +12,9 @@ define(function(){
     origin        : 'pubsub.pubnub.com',
     ssl           : true
   };
+  Settings.requestURL = function (channel, uuid) {
+    return 'https://super-support.appspot.com/route/create?channel='+channel+'&uuid='+uuid;
+  }
 
   return Settings;
 
