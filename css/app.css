@@ -382,6 +382,8 @@ body {
   background: #e7e7e7;
   height: 100%;
   width: 100%;
+  min-width: 400px;
+  min-height: 500px;
 }
 #Chat {
   height: 100%;
@@ -459,7 +461,7 @@ body {
   font-weight: bold;
 }
 #Chat #history li .author:after {
-  content: ":";
+  content: ": ";
 }
 #Chat #input-wrapper {
   position: absolute;

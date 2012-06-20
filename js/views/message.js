@@ -13,7 +13,7 @@ define([
 		'template'		:
 			
 			// This is the template
-			'<p class="ui-li-aside ui-li-desc"><strong>9:18</strong>AM</p><h3 class="ui-li-heading"></h3><p class="ui-li-desc"><strong>You</strong></p><p><%= message %></p>',
+			'<span class="time">21:07</span><span class="body"><span class="author">You</span><span class="message"><%= message %></span></span>',
 			
 		'initialize': function(){
 

@@ -24,22 +24,24 @@ define([
 			
 			// This is the template
 			// Loading state
-			'<div class="state-loading">'+
-				'<span id="loading-message"> <%= loadingMessage %> </span>'+
+			'<div id="loading">'+
 			'</div>'+
 			
 			// Loaded state
-			'<div class="state-loaded">'+
-				'<div data-role="header" data-theme="b" data-position="fixed">' +
-					'<h1> <%= grownupName %> </h1>' +
+			'<div id="loaded">'+
+				'<header>'+
+				'<img class="thumbnail" src="fixtures/images/grownup.png" />'+
+				'<div class="info">'+
+				'<span class="heading">You are now talking to</span>'+
+				'<span class="name">Camille Waddington</span>'+
+				'<ul class="nav">'+
+					'<li><span class="button">Profile</span></li>'+
+					'<li><span class="button">Call</span></li>'+
+				'</ul>'+
 				'</div>'+
+				
+			'</header>'+
 				'<div id="chatClient">'+
-				'</div>'+
-				'<div data-role="footer" class="ui-bar" data-position="fixed">'+
-					'<div data-role="controlgroup" data-type="horizontal">'+
-						'<a href="index.html" data-role="button">Logout</a>'+
-						'<a href="index.html" data-role="button">Logout & purge</a>'+
-					'</div>'+
 				'</div>'+
 			'</div>',
 			
