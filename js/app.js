@@ -15,8 +15,9 @@ define([
 
     id            : Settings.NAME,
     localStorage  : new Store( Settings.NAME ),
-    defaults      : {},
-
+    defaults      : {
+      uuid : null
+    },
 
     initialize: function () {
 
