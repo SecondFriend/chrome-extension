@@ -1,12 +1,57 @@
+body {
+  margin: 0;
+  padding: 0;
+  width: 300px;
+  height: 400px;
+  display: table;
+  background: #cbe3f6;
+  overflow: hidden;
+}
 #Chat.loading .state-loading {
   display: block;
 }
 #Chat.loading .state-loaded {
   display: none;
 }
-#Chat .state-loading {
+#Chat.loaded .state-loading {
   display: none;
 }
-#Chat .state-loaded {
+#Chat.loaded .state-loaded {
   display: block;
+}
+#Chat .state-loading {
+  width: 300px;
+  height: 400px;
+  text-align: center;
+  vertical-align: middle;
+  display: table-cell;
+  background: url('gfx/loading.gif') no-repeat center;
+}
+#Chat .grownup-bio {
+  position: absolute;
+  top: 0;
+  z-index: 1001;
+  width: 100%;
+  height: 90px;
+  background: url('gfx/header-background.png');
+}
+#Chat #history {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  padding-bottom: 30px;
+}
+#Chat #history li {
+  padding: 3px;
+  margin: 0;
+  border-top: 1px solid #eee;
+  list-style-type: none;
+}
+#Chat #input {
+  position: absolute;
+  bottom: 0;
+  height: 30px;
+  background: #f00;
 }

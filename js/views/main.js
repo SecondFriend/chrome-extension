@@ -70,10 +70,10 @@ define([
       // Initiate a chat with a consultant then do this.
       // Unset loading sate
       // Set loaded state
-      setTimeout(function(){ // Fake loader.
-        root.$el.removeClass('loading');
-        root.$el.addClass('loaded');
-      }, 2000);
+      //setTimeout(function(){ // Fake loader.
+      root.$el.removeClass('loading');
+      root.$el.addClass('loaded');
+      //}, 2000);
 
       return this.el;
     }
