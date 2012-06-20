@@ -17,7 +17,7 @@ define([
     ], function ( _, Backbone, jQuery, Settings, MessageView, MessageCollection ) {
 
       "use strict";
-    
+
       var view = Backbone.View.extend({
 
         'id'      : 'ChatClient',
@@ -30,7 +30,7 @@ define([
         'template'    : _.template($('#tpl-chat-history').html()),
 
         'initialize'  : function () {
-            
+
           // This and that
           var root = this;
           _.bindAll( this, 'messageAdd', 'messageAddAll' );
@@ -41,41 +41,45 @@ define([
           App.ChatHistory.bind('add'    , root.messageAdd   );
           App.ChatHistory.bind('reset'  , root.messageAddAll  );
           App.ChatHistory.bind('remove' , root.messageRemove  );
-          
-          
-          
-         // var pubnub = new PUBNUB(Settings.PUBNUB);
 
-          // Listen to PUBNUB and do something like
-          /*pubnub.subscribe({
-            channel  : 'my_channel',
-            callback : function(message) {
-              App.ChatHistory.add({
-                'message' : message
-              });
-            },
-            connect  : function() { // CONNECTION ESTABLISHED.
-              App.ChatHistory.add({
-                'message' : "Successfully connected."
-              });
-            },
-            disconnect : function() { // LOST CONNECTION.
-              App.ChatHistory.add({
-                'message' : "Connection Lost." +
-                             "Will auto-reconnect when Online."
-              });
-            },
-            reconnect  : function() { // CONNECTION RESTORED.
-              App.ChatHistory.add({
-                'message' : "Successfully reconnected!"
-              });
+          root.pubnub = PUBNUB.init(Settings.PUBNUB);
+
+          // Generate uuid if we don't yet have one
+          root.pubnub.uuid( function(uuid) {
+            if (!App.has("uuid")) {
+              console.log("Generated uuid: "+uuid);
+              App.set({"uuid": uuid});
+              App.save();
             }
-          });*/
 
-          // Fetch history from localstorage
-          setTimeout(function(){
-            App.ChatHistory.fetch()
-          }, 1);
+            // Subscribe to PUBNUB
+            root.pubnub.subscribe({
+              channel   : App.get("uuid"),
+
+              callback  : function(message) {
+                            App.ChatHistory.add({
+                              'message' : message
+                            });
+                          },
+
+              connect    : function() { // CONNECTION ESTABLISHED.
+                             console.log("Connected to channel " + App.get("uuid"));
+                           },
+
+              disconnect : function() { // LOST CONNECTION.
+                             console.log("Disconnected from channel " + App.get("uuid"));
+                           },
+
+              reconnect  : function() { // CONNECTION RESTORED.
+                             console.log("Reconnected to channel " + App.get("uuid"));
+                           }
+            });
+
+            // Fetch history from localstorage
+            setTimeout(function(){
+              App.ChatHistory.fetch()
+            }, 1);
+          });
         },
 
         'uninitialize' : function(){},
@@ -89,24 +93,16 @@ define([
           return this.el;
         },
 
-        'handleKeypress' : function( event ){
+        'handleKeypress' : function( event ) {
 
-          if( event && event.keyCode === 13 ){
+          if( event && event.keyCode === 13 ) {
 
-                App.ChatHistory.add({
-                  'message' : response
-                });
-
+            var message = event.srcElement.value
             // Send to PUBNUB
-           /* PUBNUB.publish({
-              channel  : "hello_world",
-              message  : "Hi.",
-              callback : function(response) {
-                App.ChatHistory.add({
-                  'message' : response
-                });
-             }
-            })*/
+            this.pubnub.publish({
+              channel  : App.get("uuid"),
+              message  : message,
+            });
           }
 
         },
@@ -118,8 +114,6 @@ define([
           // Render the model
           var view = new MessageView({'model':model});
           $('ul', '#' + this.id ).append( view.render() );
-          $('body').prop({ scrollTop: $('body').prop("scrollHeight") });
-
 
         },
 
