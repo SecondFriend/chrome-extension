@@ -1,79 +1,113 @@
-body {
-	margin: 0; padding: 0;
-	
-	width: 300px;
-	height: 400px;
-	display: table;
-	background: #cbe3f6;
-	
-	overflow: hidden;
-	
+@import 'normalize';
+
+html, body {
+	background: #e7e7e7;
+	height: 100%;
+	width: 100%;
 }
 
 #Chat {
 	
+	height: 100%;
+	width: 100%;	
+	
 	// Loading state
 	&.loading {
-		.state-loading { display: block; }
-		.state-loaded { display: none; }
+		#loading { display: block; }
+		#loaded { display: none; }
 	}
 	
 	// Loaded state
 	&.loaded {
-		.state-loading { display: none; }
-		.state-loaded { display: block; }
+		#loading { display: none; }
+		#loaded { display: block; }
 	}
 	
-	.state-loading {
-		
-		width: 300px;
-		height: 400px;
-		text-align: center;
-		vertical-align: middle;
-		display: table-cell;
+	#loading {
+		width: 100%;
+		height: 100%;
+		display: block;
 		background: url('gfx/loading.gif') no-repeat center;
-		
 	}
 	
-	.grownup-bio {
-		
+	header {
+		background: #aaa;
 		position: absolute;
 		top: 0;
-		z-index: 1001;
-		
 		width: 100%;
-		height: 90px;
-		background: url('gfx/header-background.png');
-	
+		z-index: 1001;
+		.info {
+			padding: 20px;
+		}
+		.heading {
+			display: block;
+			font-size: 10px;
+		}
+		.thumbnail {
+			position: absolute;
+			right: 20px;
+			top: 20px;
+			width: 60px;
+		}
+		.name {
+			font: normal 22px/30px Helvetica, Arial, sans-serif;
+		}
+		.nav {
+			margin: 0; padding: 0;
+			list-style-type: none;
+			li {
+				display: inline;
+			}
+		}
 	}
 	
+	// Chat history
 	#history {
-		
-		margin: 0;
-		padding: 0;
-		
-		width: 100%;
 		position: absolute;
 		bottom: 0;
-		padding-bottom: 30px;
-		
+		width: 100%;
+		list-style-type: none;
+		border-top: 1px solid #bbb;
+		margin: 0 0 38px; padding: 0;
 		li {
-			padding: 3px; margin: 0;
-			border-top: 1px solid #eee;
-			list-style-type: none;
+			position: relative;
+			border-bottom: 1px solid #bbb;
+			padding: 5px 60px 5px 5px;
+			.time {
+				position: absolute;
+				top: 5px;
+				right: 5px;
+			}
+			.author {
+				font-weight: bold;
+				&:after {
+					content:":";
+				}
+			}
 		}
 		
 	}
 	
-	#input {
-		
+	#input-wrapper {
 		position: absolute;
 		bottom: 0;
-		height: 30px;
-		background: #f00;
+		width: 100%;
 	}
 	
-	
+	#input {
+		bottom: 0;
+		display: block;
+		background: #f00;
+		overflow: hidden;
+		padding-right: 20px;
+		input {
+			width: 100%;
+			border: none;
+			padding: 10px;
+			margin: 0;
+			outline: none;
+		}
+	}
 	
 }
 

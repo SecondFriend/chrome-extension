@@ -17,7 +17,7 @@ define([
     ], function ( _, Backbone, jQuery, Settings, MessageView, MessageCollection ) {
 
       "use strict";
-
+    
       var view = Backbone.View.extend({
 
         'id'      : 'ChatClient',
@@ -30,8 +30,6 @@ define([
         'template'    : _.template($('#tpl-chat-history').html()),
 
         'initialize'  : function () {
-
-            console.log( window.PUBNUB, PUBNUB );
             
           // This and that
           var root = this;
@@ -95,8 +93,12 @@ define([
 
           if( event && event.keyCode === 13 ){
 
+                App.ChatHistory.add({
+                  'message' : response
+                });
+
             // Send to PUBNUB
-            PUBNUB.publish({
+           /* PUBNUB.publish({
               channel  : "hello_world",
               message  : "Hi.",
               callback : function(response) {
@@ -104,7 +106,7 @@ define([
                   'message' : response
                 });
              }
-            })
+            })*/
           }
 
         },
@@ -116,6 +118,8 @@ define([
           // Render the model
           var view = new MessageView({'model':model});
           $('ul', '#' + this.id ).append( view.render() );
+          $('body').prop({ scrollTop: $('body').prop("scrollHeight") });
+
 
         },
 
