@@ -18,7 +18,7 @@ define([
 			}
 			
 			this.currentView = new view();
-			$('body').html( this.currentView.render() );
+			$( 'body' ).html( this.currentView.render() );
 		
 		}
 		

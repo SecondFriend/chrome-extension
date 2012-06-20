@@ -15,9 +15,9 @@
     <input type="text" id="input" />
   </script>
   <script type="text/template" id="tpl-chat-message">
-    <span class="message">
-      <span class="timestamp"><%=message.timestamp%></span>
-      <span class="text"><%=message.payload%></span>
-    </span>
+    <p class="ui-li-aside ui-li-desc"><strong><%=message.timestamp%></strong>AM</p>
+    <h3 class="ui-li-heading"></h3>
+    <p class="ui-li-desc"><strong>You</strong></p>
+    <p><%= message.payload %></p>
   </script>
 </html>
