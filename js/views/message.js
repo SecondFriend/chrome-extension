@@ -15,7 +15,7 @@ define([
 
     'initialize': function(){
       _.bindAll(this, 'render');
-      this.model.view = this;
+      //this.model.view = this;
     },
 
 

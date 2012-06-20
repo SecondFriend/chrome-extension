@@ -9,11 +9,12 @@ define([
   'underscore',
   'backbone',
   'jquery',
-  'pubnub',
+  'settings',
   'views/message',
-  'collections/messages'
+  'collections/messages',
+  'pubnub'
 
-], function ( _, Backbone, jQuery, MessageView, MessageCollection ) {
+], function ( _, Backbone, jQuery, Settings, MessageView, MessageCollection ) {
 
   "use strict";
 
@@ -38,10 +39,10 @@ define([
       App.ChatHistory.bind('reset'  , root.messageAddAll  );
       App.ChatHistory.bind('remove' , root.messageRemove  );
 
-      var pubnub = PUBNUB(Settings.PUBNUB);
+      this.pubnub = PUBNUB.init(Settings.PUBNUB);
 
       // Listen to PUBNUB and do something like
-      pubnub.subscribe({
+      this.pubnub.subscribe({
         channel  : 'my_channel',
         callback : function(message) {
           App.ChatHistory.add({
@@ -86,13 +87,14 @@ define([
 
     'handleKeypress' : function( event ){
       if( event && event.keyCode === 13 ){
+        message = event.srcElement.value
         // Send to PUBNUB
-        PubNub.publish({
+        this.pubnub.publish({
           channel  : "hello_world",
-          message  : "Hi.",
+          message  : message,
           callback : function(response) {
             App.ChatHistory.add({
-              'message' : response
+              'message' : message
             });
           }
         })
