@@ -11,7 +11,7 @@ requirejs.config({
     localStorage  : 'libs/backbone.localStorage',
     jquery        : 'libs/jquery',
     json2         : 'libs/json2',
-    pubnub        : 'libs/pubnub',
+    pubnub        : 'https://pubnub.a.ssl.fastly.net/pubnub-3.1.min',
     settings      : 'settings',
     app           : 'app'
   }

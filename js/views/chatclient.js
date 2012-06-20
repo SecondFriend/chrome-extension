@@ -31,8 +31,6 @@ define([
 
         'initialize'  : function () {
 
-            console.log( window.PUBNUB, PUBNUB );
-            
           // This and that
           var root = this;
           _.bindAll( this, 'messageAdd', 'messageAddAll' );
@@ -43,13 +41,11 @@ define([
           App.ChatHistory.bind('add'    , root.messageAdd   );
           App.ChatHistory.bind('reset'  , root.messageAddAll  );
           App.ChatHistory.bind('remove' , root.messageRemove  );
-          
-          
-          
-         // var pubnub = new PUBNUB(Settings.PUBNUB);
+
+          this.pubnub = PUBNUB.init(Settings.PUBNUB);
 
           // Listen to PUBNUB and do something like
-          /*pubnub.subscribe({
+          this.pubnub.subscribe({
             channel  : 'my_channel',
             callback : function(message) {
               App.ChatHistory.add({
@@ -72,7 +68,7 @@ define([
                 'message' : "Successfully reconnected!"
               });
             }
-          });*/
+          });
 
           // Fetch history from localstorage
           setTimeout(function(){
@@ -95,13 +91,14 @@ define([
 
           if( event && event.keyCode === 13 ){
 
+            message = event.srcElement.value
             // Send to PUBNUB
-            PUBNUB.publish({
+            this.pubnub.publish({
               channel  : "hello_world",
-              message  : "Hi.",
+              message  : message,
               callback : function(response) {
                 App.ChatHistory.add({
-                  'message' : response
+                  'message' : message
                 });
              }
             })
