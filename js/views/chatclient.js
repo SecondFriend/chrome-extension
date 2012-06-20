@@ -61,24 +61,14 @@ define([
 
           connect    : function() { // CONNECTION ESTABLISHED.
                          console.log("Connected to channel " + App.get("uuid"));
-                         App.ChatHistory.add({
-                           'message' : "Successfully connected."
-                         });
                        },
 
           disconnect : function() { // LOST CONNECTION.
                          console.log("Disconnected from channel " + App.get("uuid"));
-                         App.ChatHistory.add({
-                           'message' : "Connection Lost." +
-                           "Will auto-reconnect when Online."
-                         });
                        },
 
           reconnect  : function() { // CONNECTION RESTORED.
                          console.log("Reconnected to channel " + App.get("uuid"));
-                         App.ChatHistory.add({
-                           'message' : "Successfully reconnected!"
-                         });
                        }
         });
 
