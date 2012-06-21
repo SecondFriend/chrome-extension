@@ -4,9 +4,10 @@ define([
 	'underscore'		,
 	'jquery'			,
 	'backbone'			,
-	'views/main'		
+	'views/main'		,
+	'views/login'
 	
-], function (Settings, _, $, Backbone, MainView) {
+], function (Settings, _, $, Backbone, MainView, LoginView) {
 
 	"use strict";
 	
@@ -27,13 +28,18 @@ define([
 	return Backbone.Router.extend({
 	
 		routes: {
+			'login'		: 'login'		,
 			'main'		: 'main'		,
-			'*path'  	: 'main'
+			'*path'  	: 'login'
 		},
 		
 		
 		main: function () {
 			viewHandler.show( MainView );
+		},
+		
+		login: function () {
+			viewHandler.show( LoginView );
 		}
 		
 	});

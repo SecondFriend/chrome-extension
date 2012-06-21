@@ -9,15 +9,19 @@
 
   <!-- Templates -->
   <script type="text/template" id="tpl-chat-history">
-    <ul id="history"></ul>
+    <ul id="history">
+    	<li class="ui-li ui-body-c ui-li-static">
+    <span class="time">06:41</span>
+    <span class="body">
+      <span class="author">Camille</span>
+      <span class="message">Hi there! What can I do for you?</span>
+    </span>
+  </li>
+    </ul>
     <div id="input-wrapper">
       <div id="input">
         <input id="chat-input" placeholder="Start chatting here..." type="text" />
       </div>
-      <ul class="nav">
-        <li><span id="button-close" class="button">Close chat</span></li>
-        <li><span id="button-purge" class="button">Close chat &amp; purge data</span></li>
-      </ul>
     </div>
   </script>
   <script type="text/template" id="tpl-chat-message">
