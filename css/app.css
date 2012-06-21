@@ -1,0 +1,60 @@
+article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block;}
+audio,canvas,video{display:inline-block;*display:inline;*zoom:1;}
+audio:not([controls]){display:none;}
+[hidden]{display:none;}
+html{font-size:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;}
+body{margin:0;}
+body,button,input,select,textarea{font-family:sans-serif;}
+a:focus{outline:thin dotted;}
+a:hover,a:active{outline:0;}
+h1{font-size:2em;}
+abbr[title]{border-bottom:1px dotted;}
+b,strong{font-weight:bold;}
+blockquote{margin:1em 40px;}
+dfn{font-style:italic;}
+mark{background:#ff0;color:#000;}
+pre,code,kbd,samp{font-family:monospace, serif;_font-family:'courier new',monospace;font-size:1em;}
+pre{white-space:pre;white-space:pre-wrap;word-wrap:break-word;}
+q{quotes:none;}
+q:before,q:after{content:'';content:none;}
+small{font-size:75%;}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;}
+sup{top:-0.5em;}
+sub{bottom:-0.25em;}
+ul,ol{margin-left:0;padding:0 0 0 40px;}
+dd{margin:0 0 0 40px;}
+nav ul,nav ol{list-style:none;list-style-image:none;}
+img{border:0;-ms-interpolation-mode:bicubic;}
+svg:not(:root){overflow:hidden;}
+figure{margin:0;}
+form{margin:0;}
+fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:0.35em 0.625em 0.75em;}
+legend{border:0;*margin-left:-7px;}
+button,input,select,textarea{font-size:100%;margin:0;vertical-align:baseline;*vertical-align:middle;}
+button,input{line-height:normal;}
+button,input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;*overflow:visible;}
+input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0;}
+input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box;}
+input[type="search"]::-webkit-search-decoration{-webkit-appearance:none;}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0;}
+textarea{overflow:auto;vertical-align:top;}
+table{border-collapse:collapse;border-spacing:0;}
+html,body{background-image:url('gfx/app-background.png');height:100%;width:100%;min-width:400px;min-height:500px;}
+#Login{font-size:1.5em;line-height:1em;text-align:center;max-width:400px;margin:0 auto;color:#fff;padding:0 30px;}#Login h3{font:bold 2em Helvetica,Arial,sans-serif;margin-bottom:.25em;}
+#Chat{height:100%;display:inline;margin:0 10px;}#Chat.loading #loading{display:block;}
+#Chat.loading #loaded{display:none;}
+#Chat.loaded #loading{display:none;}
+#Chat.loaded #loaded{display:block;}
+#Chat #loading{width:100%;height:100%;display:block;background:url('gfx/loading.gif') no-repeat center;}
+#Chat header{background:url('gfx/header-background.png') repeat-x;color:#1a4060;position:absolute;top:0;width:100%;z-index:1001;height:101px;font:normal 9px Helvetica,Arial,sans-serif;}#Chat header .info{padding:25px 0 0 85px;}
+#Chat header .heading{display:block;font-size:16px;}
+#Chat header .thumbnail{position:absolute;left:10px;top:10px;width:60px;border:1px solid #2a5981;}
+#Chat header .name{font:normal 24px/28px Helvetica,Arial,sans-serif;color:#fff;}
+#Chat header .nav{margin:0;padding:0;list-style-type:none;}#Chat header .nav li{display:inline;}
+#Chat #history{background:#f7f7f7;position:absolute;bottom:0;width:100%;list-style-type:none;border-top:1px solid #bbb;margin:0 0 38px;padding:0;}#Chat #history li{position:relative;border-bottom:1px solid #bbb;padding:5px 60px 5px 5px;}#Chat #history li .time{position:absolute;top:5px;right:5px;font-size:10px;}
+#Chat #history li .author{font-weight:bold;}
+#Chat #history li.status{font-style:italic;}
+#Chat #input-wrapper{position:absolute;bottom:0;width:100%;height:38px;}#Chat #input-wrapper .nav{display:block;height:30px;background:url('gfx/header-background.png') bottom repeat-x;list-style-type:none;margin:0;padding:0;}#Chat #input-wrapper .nav li{display:inline;}
+#Chat #input{bottom:0;width:100%;overflow:hidden;}#Chat #input input{width:100%;border:none;padding:10px;margin:0;outline:none;}
+#Chat #input button{z-index:2;height:38px;position:absolute;bottom:0;right:0;}
+@media (max-width:767px){body{padding:0px;margin:0px;}}
