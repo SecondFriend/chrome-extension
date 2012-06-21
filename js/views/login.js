@@ -26,7 +26,7 @@ define([
       // This is the template
       // Loading state
 			'<h3>Second Friend</h3>'+
-			'<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>'+
+			'<p>Second Friend is totaly anonymous. We will not save any information about you.</p>'+
 			'<input type="text" id="nickname" value="<%=nickname%>" placeholder="Choose a nickname..." />'+
 			'<button id="login">Start chat</button>',
 
