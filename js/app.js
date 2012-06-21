@@ -21,9 +21,12 @@ define([
     },
 
     initialize: function () {
-
+      
+      _.bindAll( this, 'start' );
+    	
       // Fetch application settings
       this.fetch();
+      
 
     },
 
@@ -33,7 +36,7 @@ define([
       var root = this;
 
       // Create a user
-      this.User = new User();
+      App.User = new User();
 
       // Initialize and start routing.
       root.Router   = new Router();

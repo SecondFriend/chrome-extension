@@ -62,7 +62,7 @@ define([
     'login' : function(){
 
       // Store name to User model
-      App.User.set({'nickname': $('#nickname')});
+      App.User.set({'nickname': $('#nickname').val()});
       App.User.save();
 
       // Go to main view
