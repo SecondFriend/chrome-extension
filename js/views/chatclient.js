@@ -28,16 +28,10 @@ define([
     },
     'template': _.template($('#tpl-chat-history').html()),
 
-    'fmtTime'     : function(timetoken) {
-      var now = new Date(timetoken/10000);
-      //return now.toTimeString();
-      return now.getHours()+':'+now.getMinutes();//+':'+now.getSeconds();
-    },
-
     'initialize'  : function () {
       // This and that?
       var root = this;
-      _.bindAll( this, 'messageSend', 'messageAdd', 'messageAddAll', 'fmtTime' );
+      _.bindAll( this, 'messageSend', 'messageAdd', 'messageAddAll' );
 
       // Set up storage for chat history
       App.ChatHistory = new MessageCollection();
@@ -115,9 +109,7 @@ define([
 
     'render': function () {
       // Append html to view element.
-      $( this.el ).html( this.template({
-        'heading' : 'LOADING'
-      }) );
+      $( this.el ).html( this.template() );
 
       return this.el;
     },
@@ -137,7 +129,7 @@ define([
       root.pubnub.time( function(time) {
         var msg = {
           type: type,
-          timestamp: root.fmtTime(time),
+          timestamp: time,
           sender: App.get("nickname"),
           payload: payload
         };

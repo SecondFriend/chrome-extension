@@ -17,7 +17,7 @@
     </div>
   </script>
   <script type="text/template" id="tpl-chat-message">
-    <span class="time"><%=message.timestamp%></span>
+    <span class="time"><%=_.fmtTime(message.timestamp)%></span>
     <span class="body">
       <span class="author"><%=message.sender%></span>
       <span class="message"><%= message.payload %></span>

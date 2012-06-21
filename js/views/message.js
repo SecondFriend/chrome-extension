@@ -6,6 +6,13 @@ define([
 
 ], function( _, Backbone, jQuery ){
 
+  _.mixin({
+    'fmtTime' : function(timetoken) {
+      var now = new Date(timetoken/10000);
+      return now.getHours()+':'+now.getMinutes()+':'+now.getSeconds();
+    },
+  });
+
   var view = Backbone.View.extend({
     'tagName' : 'li',
     'className' : 'ui-li ui-body-c ui-li-static',
@@ -13,13 +20,12 @@ define([
     'template': _.template($('#tpl-chat-message').html()),
 
     'initialize': function(){
+
       _.bindAll(this, 'render');
-      //this.model.view = this;
+
     },
 
-
     'render' : function(){
-      console.log( this.model.toJSON() );
 
       if(!this.model.toJSON().message) return false;
 
@@ -28,8 +34,8 @@ define([
       return this.el;
     }
 
-
   });
+
   return view;
 
 });
