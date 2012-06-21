@@ -76,12 +76,6 @@ define([
                           .done( function() { console.log("Notification of backend successful"); })
                           .fail( function() { console.error("Notification of backend failed"); });
 
-                         // Notify the backend about my nickname
-                         root.messageSend('system', {
-                           action: 'changenick',
-                           nickname: App.get("nickname")
-                         })
-
                          // Initiate a chat with a consultant then do this.
                          // Unset loading sate
                          // Set loaded state
@@ -169,6 +163,12 @@ define([
         case 'counselor':
           App.Counselor = message.payload;
           App.trigger('new-counselor');
+
+          // Notify the backend about my nickname
+          this.messageSend('system', {
+            action: 'changenick',
+            nickname: App.get("nickname")
+          });
           break;
       }
     }
