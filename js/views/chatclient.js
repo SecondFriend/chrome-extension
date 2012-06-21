@@ -23,7 +23,7 @@ define([
     'id'      : 'ChatClient',
     'tagName' : 'div',
     'events'  : {
-      'keypress #chat-input' : 'handleKeypress',
+      'submit form#chat' : 'messageSubmit',
       'click #button-purge' : 'purgeLocalStorage'
     },
     'template': _.template($('#tpl-chat-history').html()),
@@ -109,13 +109,10 @@ define([
       return this.el;
     },
 
-    'handleKeypress' : function( event ) {
-      if( event && event.keyCode === 13 ) {
-        var value = event.srcElement.value;
-        $( event.srcElement ).val('');
-
-        this.messageSend('text', value);
-      }
+    'messageSubmit' : function( e ) {
+      e.preventDefault();
+      this.messageSend('text', $('#chat-input').val());
+      $( '#chat-input' ).val('');
     },
 
     'messageSend' : function( type, payload ) {

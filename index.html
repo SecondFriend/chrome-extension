@@ -11,11 +11,13 @@
   <!-- Templates -->
   <script type="text/template" id="tpl-chat-history">
     <ul id="history"></ul>
-    <div id="input-wrapper">
-      <div id="input">
-        <input id="chat-input" placeholder="Start chatting here..." type="text" />
+    <form id="chat" class="form-inline" autocomplete="off">
+      <div id="input-wrapper" class="controls">
+        <div id="input" class="input-append">
+          <input id="chat-input" type="text" placeholder="Your chat message..." /><button class="btn" type="submit"><strong>Send</strong></button>
+        </div>
       </div>
-    </div>
+    </form>
   </script>
   <script type="text/template" id="tpl-chat-message">
     <span class="time"><%=_.fmtTime(message.timestamp)%></span>
