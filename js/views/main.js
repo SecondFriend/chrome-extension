@@ -54,12 +54,7 @@ define([
     'render': function () {
       var root = this;
 
-      var data = {
-        'heading' : 'CHAT',
-        'loadingMessage' : 'You are being connected to a secure and anonymous chat. Please wait a moment...',
-        'grownupPhoto' : '/fixtures/images/grownup.png',
-        'grownupName' : 'Camille Waddington'
-      };
+      var data = {};
 
       var html = _.template( this.template, data );
 
