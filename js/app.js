@@ -24,13 +24,8 @@ define([
 
       _.bindAll( this, 'start' );
 
-      // Clear local storage (for demo purposes)
-      localStorage.clear();
-
       // Fetch application settings
-      //this.fetch();
-
-
+      this.fetch();
     },
 
     start: function(){
@@ -41,10 +36,8 @@ define([
       // Initialize and start routing.
       root.Router   = new Router();
       Backbone.history.start();
-
     }
 
   });
-
 
 });
