@@ -17,7 +17,7 @@ define([
     localStorage  : new Store( Settings.NAME ),
     defaults      : {
       uuid : null,
-      nickname: 'JoeBloggs'
+      nickname: ''
     },
 
     initialize: function () {
