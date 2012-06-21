@@ -16,27 +16,30 @@ define([
 
   return Backbone.View.extend({
 
-    'id'      : 'Login' ,
+    'id'      : 'Counselor' ,
     'tagName'   : 'div'   ,
-    'events'    : {
-      'click #login' : 'login',
-    }   ,
+    'events'    : {}   ,
     'template'    :
 
       // This is the template
       // Loading state
-			'<h3>Second Friend</h3>'+
-			'<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>'+
-			'<label>Nickname <input type="text" /></label>'+
-			'<button id="login">Login</button>',
+				'<img class="thumbnail" src="<%= avatar %>" />'+
+				'<div class="info">'+
+				'<span class="heading">You are now talking to</span>'+
+				'<span class="name"><%= name %></span>',
 
 
     'initialize'  : function () {
 
-        // This and thatÉ
+        // This and thatƒ
         var root = this;
 
         _.bindAll( this, 'render' );
+        
+                    
+            App.on('new-counselor', function(){
+                root.render();
+            });
 
     },
 
@@ -46,29 +49,25 @@ define([
 
 
     'render': function () {
-
+        
       var root = this;
-
       var data = {};
-
-      var html = _.template( this.template, data );
+      
+      console.log( App.Counselor );
+      
+      if( App.Counselor )
+        var html = _.template( this.template, App.Counselor );
+      else
+        var html = _.template( this.template, {'avatar':'','name':''} ); 
+        
 
       // Append html to view element.
       $( this.el ).html( html );
 
       return this.el;
-    },
-
-    'login' : function(){
-
-      // Store name to User model
-      App.User.set({'nickname': $('#nickname').val()});
-      App.User.save();
-
-      // Go to main view
-      App.Router.navigate('main', true);
-
+    
     }
+    
 
   });
 
