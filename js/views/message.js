@@ -4,7 +4,7 @@ define([
   'backbone',
   'jquery'
 
-], function( _, Backbone, jQuery ){
+], function( _, Backbone, $ ){
 
   _.mixin({
     'fmtTime' : function(timetoken) {
