@@ -14,7 +14,7 @@ define([
 
   "use strict";
 
-  var view = Backbone.View.extend({
+  return Backbone.View.extend({
 
     'id'      : 'Login',
     'tagName' : 'div',
@@ -57,12 +57,13 @@ define([
 
     'login' : function(){
       // Store name to User model
+      App.User.set({'nickname': $('#nickname').val()});
+      App.User.save();
 
       // Go to main view
       App.Router.navigate('main', true);
     }
 
   });
-  return view;
 
 });
