@@ -5,10 +5,9 @@ define([
   'jquery',
   'backbone',
   'router',
-  'models/user',
   'localStorage',
 
-], function ( Settings, _, jQuery, Backbone, Router, User ) {
+], function ( Settings, _, jQuery, Backbone, Router ) {
 
   "use strict";
 
@@ -17,24 +16,21 @@ define([
     id            : Settings.NAME,
     localStorage  : new Store( Settings.NAME ),
     defaults      : {
-      uuid : null
+      uuid : null,
+      nickname: ''
     },
 
     initialize: function () {
       _.bindAll( this, 'start' );
 
-      localStorage.clear();
-
       // Fetch application settings
       this.fetch();
+
     },
 
     start: function(){
       // This, that…
       var root = this;
-
-      // Create a user
-      App.User = new User();
 
       // Initialize and start routing.
       root.Router   = new Router();
