@@ -1,5 +1,6 @@
 define('localstorage', ['underscore', 'jquery', 'backbone'], function(_, $, Backbone) {
 
+
 /**
  * Backbone localStorage Adapter v1.0
  * https://github.com/jeromegn/Backbone.localStorage
@@ -123,5 +124,6 @@ model.collection.localStorage)){
      } 
   }; 
 */
+
 
 });
