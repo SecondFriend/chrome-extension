@@ -19,17 +19,9 @@ define([
     'id'      : 'Login' ,
     'tagName'   : 'div'   ,
     'events'    : {
-      'click #login' : 'login',
+      'submit #login' : 'login',
     }   ,
-    'template'    :
-
-      // This is the template
-      // Loading state
-			'<h3>Second Friend</h3>'+
-			'<p>Second Friend is totaly anonymous. We will not save any information about you.</p>'+
-			'<input type="text" id="nickname" value="<%=nickname%>" placeholder="Choose a nickname..." />'+
-			'<button id="login">Start chat</button>',
-
+    'template'    : _.template($('#tpl-login').html()),
 
     'initialize'  : function () {
 
@@ -49,10 +41,8 @@ define([
 
       var root = this;
 
-      var html = _.template( this.template, App.toJSON() );
-
       // Append html to view element.
-      $( this.el ).html( html );
+      $( this.el ).html( this.template(App.toJSON()) );
 
       return this.el;
     },

@@ -1,143 +1,146 @@
 @import 'normalize';
 
 html, body {
-	 background-image: url('gfx/app-background.png'); 
+   background-image: url('gfx/app-background.png');
 
-	height: 100%;
-	width: 100%;
-	min-width: 400px;
-	min-height: 500px;
+  height: 100%;
+  width: 100%;
+  min-width: 400px;
+  min-height: 500px;
 }
 
 #Login {
-	text-align: center;
-	max-width: 400px;
-	margin: 0 auto;
-	color: #fff;
-	padding: 0 30px;
-	h3 {
-    	font: bold 36px Helvetica, Arial, sans-serif
-	}
+  font-size: 1.75em;
+  line-height: 1em;
+  text-align: center;
+  max-width: 400px;
+  margin: 0 auto;
+  color: #fff;
+  padding: 0 30px;
+  h3 {
+    font: bold 3em Helvetica, Arial, sans-serif;
+    margin-bottom: .25em;
+  }
 }
 
 #Chat {
-	
-	height: 100%;
-	display: inline;
-	margin: 0 10px;	
-	
-	// Loading state
-	&.loading {
-		#loading { display: block; }
-		#loaded { display: none; }
-	}
-	
-	// Loaded state
-	&.loaded {
-		#loading { display: none; }
-		#loaded { display: block; }
-	}
-	
-	#loading {
-		width: 100%;
-		height: 100%;
-		display: block;
-		background: url('gfx/loading.gif') no-repeat center;
-	}
-	
-	header {
-		background: url('gfx/header-background.png') repeat-x;
-		color: #1a4060;
-		position: absolute;
-		top: 0;
-		width: 100%;
-		z-index: 1001;
-		height: 101px;
-		font: normal 9px Helvetica, Arial, sans-serif;
-		.info {
-			padding: 25px 0 0 85px;
-		}
-		.heading {
-			display: block;
-			font-size: 16px;
-		}
-		.thumbnail {
-			position: absolute;
-			left: 10px;
-			top: 10px;
-			width: 60px;
-			border: 1px solid #2a5981;
-		}
-		.name {
-			font: normal 24px/28px Helvetica, Arial, sans-serif;
-			color: #fff;
-		}
-		.nav {
-			margin: 0; padding: 0;
-			list-style-type: none;
-			li {
-				display: inline;
-			}
-		}
-	}
 
-	// Chat history
-	#history {
-		background: #f7f7f7;
-		position: absolute;
-		bottom: 0;
-		width: 100%;
-		list-style-type: none;
-		border-top: 1px solid #bbb;
-		margin: 0 0 38px; padding: 0;
-		li {
-			position: relative;
-			border-bottom: 1px solid #bbb;
-			padding: 5px 60px 5px 5px;
-			.time {
-				position: absolute;
-				top: 5px;
-				right: 5px;
-				font-size: 10px;
-			}
-			.author {
-				font-weight: bold;
-			}
-		}
+  height: 100%;
+  display: inline;
+  margin: 0 10px;
+
+  // Loading state
+  &.loading {
+    #loading { display: block; }
+    #loaded { display: none; }
+  }
+
+  // Loaded state
+  &.loaded {
+    #loading { display: none; }
+    #loaded { display: block; }
+  }
+
+  #loading {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: url('gfx/loading.gif') no-repeat center;
+  }
+
+  header {
+    background: url('gfx/header-background.png') repeat-x;
+    color: #1a4060;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1001;
+    height: 101px;
+    font: normal 9px Helvetica, Arial, sans-serif;
+    .info {
+      padding: 25px 0 0 85px;
+    }
+    .heading {
+      display: block;
+      font-size: 16px;
+    }
+    .thumbnail {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      width: 60px;
+      border: 1px solid #2a5981;
+    }
+    .name {
+      font: normal 24px/28px Helvetica, Arial, sans-serif;
+      color: #fff;
+    }
+    .nav {
+      margin: 0; padding: 0;
+      list-style-type: none;
+      li {
+        display: inline;
+      }
+    }
+  }
+
+  // Chat history
+  #history {
+    background: #f7f7f7;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    list-style-type: none;
+    border-top: 1px solid #bbb;
+    margin: 0 0 38px; padding: 0;
+    li {
+      position: relative;
+      border-bottom: 1px solid #bbb;
+      padding: 5px 60px 5px 5px;
+      .time {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        font-size: 10px;
+      }
+      .author {
+        font-weight: bold;
+      }
+    }
     li.status {
       font-style: italic;
     }
-		
-	}
-	
-	#input-wrapper {
-		position: absolute;
-		bottom: 0;
-		width: 100%;
-		height: 38px;
-		.nav {
-			display: block;
-			height: 30px;
-			background: url('gfx/header-background.png') bottom repeat-x;
-			list-style-type: none;
-			margin: 0; padding: 0;
-			li { display: inline; }
-		}
-	}
-	
-	#input {
-		bottom: 0;
-		display: block;
-		overflow: hidden;
-		padding-right: 20px;
-		input {
-			width: 100%;
-			border: none;
-			padding: 10px;
-			margin: 0;
-			outline: none;
-		}
-	}
-	
+
+  }
+
+  #input-wrapper {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 38px;
+    .nav {
+      display: block;
+      height: 30px;
+      background: url('gfx/header-background.png') bottom repeat-x;
+      list-style-type: none;
+      margin: 0; padding: 0;
+      li { display: inline; }
+    }
+  }
+
+  #input {
+    bottom: 0;
+    display: block;
+    overflow: hidden;
+    padding-right: 20px;
+    input {
+      width: 100%;
+      border: none;
+      padding: 10px;
+      margin: 0;
+      outline: none;
+    }
+  }
+
 }
 
