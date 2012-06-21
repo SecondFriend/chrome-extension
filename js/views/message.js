@@ -19,6 +19,10 @@ define([
 
 
     'render' : function(){
+      console.log( this.model.toJSON() );
+
+      if(!this.model.toJSON().message) return false;
+
       $( this.el ).html( this.template(this.model.toJSON()) ).addClass( this.model.get('type') );
 
       return this.el;

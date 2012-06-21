@@ -25,7 +25,7 @@ define([
 
       // This is the template
       // Loading state
-      '<h3>Second friend</h3>'+
+      '<h3>Second Friend</h3>'+
       '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>'+
       '<label>Nickname <input type="text" /></label>'+
       '<button id="login">Login</button>',

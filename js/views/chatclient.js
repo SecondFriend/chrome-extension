@@ -30,8 +30,8 @@ define([
 
     'fmtTime'     : function(timetoken) {
       var now = new Date(timetoken/10000);
-      return now.toTimeString();
-      //return now.getHours()+':'+now.getMinutes()+':'+now.getSeconds();
+      //return now.toTimeString();
+      return now.getHours()+':'+now.getMinutes();//+':'+now.getSeconds();
     },
 
     'initialize'  : function () {
@@ -61,9 +61,16 @@ define([
           channel   : App.get("uuid"),
 
           callback  : function(message) {
-                        App.ChatHistory.add({
-                          'message' : message
-                        });
+                        var type = message.type;
+
+                        switch( type ){
+                            case 'text':
+                                App.ChatHistory.add({'message' : message});
+                                break;
+                            case 'system':
+                                root.handleSystemMessages( message );
+                                break;
+                        }
                       },
 
           connect    : function() { // CONNECTION ESTABLISHED.
@@ -110,6 +117,9 @@ define([
 
     'handleKeypress' : function( event ) {
       if( event && event.keyCode === 13 ) {
+        var value = event.srcElement.value;
+        $( event.srcElement ).val('');
+
         var root = this;
         // Send to PUBNUB
         root.pubnub.time( function(time) {
@@ -118,7 +128,7 @@ define([
             message  : {
               type: 'text',
               timestamp: root.fmtTime(time),
-              payload: event.srcElement.value
+              payload: value
             },
           });
         });
@@ -145,6 +155,16 @@ define([
       window.close();
     },
 
+    'handleSystemMessages' : function( message ){
+        var action = message.payload.action;
+
+        switch( action ){
+            case 'counselor':
+                App.Counselor = message.payload;
+                App.trigger('new-counselor');
+                break;
+        }
+    }
   });
   return view;
 

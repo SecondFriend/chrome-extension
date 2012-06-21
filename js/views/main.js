@@ -9,9 +9,10 @@ define([
   'underscore',
   'backbone',
   'jquery',
-  'views/chatclient'
+  'views/chatclient',
+  'views/counselor'
 
-], function ( _, Backbone, jQuery, ChatClient ) {
+], function ( _, Backbone, jQuery, ChatClient, Counselor ) {
 
   "use strict";
 
@@ -29,15 +30,7 @@ define([
 
       // Loaded state
       '<div id="loaded">'+
-        '<header>'+
-        '<img class="thumbnail" src="fixtures/images/grownup.png" />'+
-        '<div class="info">'+
-        '<span class="heading">You are now talking to</span>'+
-        '<span class="name">Camille Waddington</span>'+
-        '<ul class="nav">'+
-          '<li><span class="button">Profile</span></li>'+
-          '<li><span class="button">Call</span></li>'+
-        '</ul>'+
+        '<header id="counselor">'+
         '</div>'+
 
       '</header>'+
@@ -76,6 +69,10 @@ define([
       // Load and inject chat client.
       var chatClient = new ChatClient();
       $( '#chatClient', this.el ).html( chatClient.render() );
+
+      // Load and inject counselor
+      var counselor = new Counselor();
+      $( '#counselor', this.el ).html( counselor.render() );
 
       return this.el;
     }
