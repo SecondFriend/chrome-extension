@@ -23,8 +23,11 @@ define([
     initialize: function () {
       _.bindAll( this, 'start' );
 
+      // Clear local storage (for demo purposes)
+      localStorage.clear();
+
       // Fetch application settings
-      this.fetch();
+      //this.fetch();
 
     },
 
