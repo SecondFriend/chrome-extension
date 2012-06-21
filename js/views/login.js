@@ -56,7 +56,6 @@ define([
 
       // Go to main view
       App.Router.navigate('main', true);
-
     }
 
   });

@@ -36,6 +36,9 @@ define([
       // Initialize and start routing.
       root.Router   = new Router();
       Backbone.history.start();
+
+      // Go to main view straight away if we have previous history
+      if (App.get("nickname")) App.Router.navigate('main', true);
     }
 
   });
