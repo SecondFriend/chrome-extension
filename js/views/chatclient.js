@@ -40,7 +40,7 @@ define([
 
           // This and that
           var root = this;
-          _.bindAll( this, 'messageAdd', 'messageAddAll', 'fmtTime' );
+          _.bindAll( this, 'messageSend', 'messageAdd', 'messageAddAll', 'fmtTime' );
 
           // Set up storage for chat history
           App.ChatHistory = new MessageCollection();
@@ -64,9 +64,10 @@ define([
               channel   : App.get("uuid"),
 
               callback  : function(message) {
-                            
+
+                            console.log("Message received:", message);
                             var type = message.type;
-                            
+
                             switch( type ){
                                 case 'text':
                                     App.ChatHistory.add({'message' : message});
@@ -83,6 +84,12 @@ define([
                              jQuery.ajax(Settings.requestURL(uuid, uuid))
                               .done( function() { console.log("Notification of backend successful"); })
                               .fail( function() { console.error("Notification of backend failed"); });
+
+                             // Notify the backend about my nickname
+                             root.messageSend('system', {
+                               action: 'changenick',
+                               nickname: App.get("nickname")
+                             })
 
                              // Initiate a chat with a consultant then do this.
                              // Unset loading sate
@@ -121,24 +128,31 @@ define([
         'handleKeypress' : function( event ) {
 
           if( event && event.keyCode === 13 ) {
-              
-              var value = event.srcElement.value;
-              $( event.srcElement ).val('');
-              
-            var root = this;
-            // Send to PUBNUB
-            root.pubnub.time( function(time) {
-              root.pubnub.publish({
-                channel  : App.get("uuid"),
-                message  : {
-                  type: 'text',
-                  timestamp: root.fmtTime(time),
-                  payload: value
-                },
-              });
-            });
+
+            var value = event.srcElement.value;
+            $( event.srcElement ).val('');
+
+            this.messageSend('text', value);
           }
 
+        },
+
+        'messageSend' : function( type, payload ) {
+          var root = this;
+          // Send to PUBNUB
+          root.pubnub.time( function(time) {
+            var msg = {
+              type: type,
+              timestamp: root.fmtTime(time),
+              sender: App.get("nickname"),
+              payload: payload
+            };
+            root.pubnub.publish({
+              channel  : App.get("uuid"),
+              message  : msg,
+            });
+            console.log("Message sent:", msg);
+          });
         },
 
         'messageAdd' : function( model ){
@@ -158,23 +172,23 @@ define([
             root.messageAdd( model );
           });
         },
-        
+
         'purgeLocalStorage' : function(){
-	      window.localStorage.clear();
-	      window.close();  
+          window.localStorage.clear();
+          window.close();
         },
-        
+
         'handleSystemMessages' : function( message ){
-                
-            var action = message.payload.action;
-            
-            switch( action ){
-                case 'counselor':
-                    App.Counselor = message.payload;
-                    App.trigger('new-counselor');
-                    break;
-            }
-            
+
+          var action = message.payload.action;
+
+          switch( action ){
+            case 'counselor':
+              App.Counselor = message.payload;
+              App.trigger('new-counselor');
+              break;
+          }
+
         }
 
       });

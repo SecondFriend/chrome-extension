@@ -27,8 +27,8 @@ define([
       // Loading state
 			'<h3>Second Friend</h3>'+
 			'<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>'+
-			'<label>Nickname <input type="text" /></label>'+
-			'<button id="login">Login</button>',
+			'<input type="text" id="nickname" value="<%=nickname%>" placeholder="Choose a nickname..." />'+
+			'<button id="login">Start chat</button>',
 
 
     'initialize'  : function () {
@@ -49,9 +49,7 @@ define([
 
       var root = this;
 
-      var data = {};
-
-      var html = _.template( this.template, data );
+      var html = _.template( this.template, App.toJSON() );
 
       // Append html to view element.
       $( this.el ).html( html );
@@ -61,9 +59,9 @@ define([
 
     'login' : function(){
 
-      // Store name to User model
-      App.User.set({'nickname': $('#nickname').val()});
-      App.User.save();
+      // Store nickname in the app
+      App.set({'nickname': $('#nickname').val()});
+      App.save();
 
       // Go to main view
       App.Router.navigate('main', true);
