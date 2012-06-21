@@ -19,7 +19,7 @@ define([
     'id'      : 'Login' ,
     'tagName' : 'div'   ,
     'events'  : {
-      'submit #login' : 'login',
+      'submit form#login' : 'login',
     }   ,
     'template': _.template($('#tpl-login').html()),
 
@@ -43,7 +43,9 @@ define([
       return this.el;
     },
 
-    'login' : function(){
+    'login' : function(e){
+      e.preventDefault();
+
       // Store nickname in the app
       App.set({'nickname': $('#nickname').val()});
       App.save();
