@@ -59,6 +59,7 @@ define([
                         var type = message.type;
 
                         switch( type ){
+                            case 'status':
                             case 'text':
                                 App.ChatHistory.add({'message' : message});
                                 break;
