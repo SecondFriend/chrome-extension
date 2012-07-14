@@ -13,7 +13,7 @@ define(function(){
     'ssl'           : true
   };
   Settings.requestURL = function (channel, uuid) {
-    return 'https://super-support.appspot.com/route/create?channel='+channel+'&uuid='+uuid;
+    return 'https://second-friend.appspot.com/route/create?channel='+channel+'&uuid='+uuid;
   }
 
   return Settings;
