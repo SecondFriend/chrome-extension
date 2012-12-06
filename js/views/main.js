@@ -25,6 +25,8 @@ define([
 			
 			// This is the template
 			// Loading state
+			'<div class="container-fluid"><div class="row-fluid">'+
+			
 			'<div id="loading">'+
 			'</div>'+
 			
@@ -33,10 +35,12 @@ define([
 				'<header id="counselor">'+
 				'</div>'+
 				
-			'</header>'+
+				'</header>'+
 				'<div id="chatClient">'+
 				'</div>'+
-			'</div>',
+			'</div>'+
+
+			'</div></div>',
 			
         
         'initialize'	: function () {
