@@ -2,9 +2,14 @@
 <html>
   <head>
     <title>Template</title>
-    <link rel="stylesheet" href="http://current.bootstrapcdn.com/bootstrap-v204/css/bootstrap-combined.min.css" type="text/css" media="screen" charset="utf-8">
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8">
     <link rel="stylesheet" href="css/app.css" type="text/css" media="screen" charset="utf-8">
+    <script data-main="js/bootloader" src="js/less.js"></script>
     <script data-main="js/bootloader" src="js/libs/require.js"></script>
+
+    <style type="text-css">
+
+    </style>
   </head>
   <body style="padding:0px;margin:0px;"></body>
 
@@ -30,13 +35,13 @@
     <h3>Second Friend</h3>
     <p>Second Friend is a totaly anonymous, confidential and secure way to chat with a trained counselor.<br/> We will not transmit or save any information about you!</p>
     <div class="alert alert-info">
-      <strong>Getting started is dead easy:</strong> Simply type a nickname below and hit the button. You don't need to tell us your real name!
+      <strong>Getting started is dead easy:</strong> Simply type a nickname below and hit the button. You do not need to tell us your real name!
     </div>
     <form id="login" class="form-inline input-append">
       <div class="control-group">
         <div class="controls">
           <div class="input-append">
-            <input class="span4" id="nickname" size="16" type="text" value="<%= nickname %>" placeholder="Choose a nickname..."><button class="btn" type="submit"><strong>Start chat</strong></button>
+            <input class="span4 input-append" id="nickname" size="16" type="text" value="<%= nickname %>" placeholder="Choose a nickname..."><button class="btn" type="submit"><strong>Start chat</strong></button>
           </div>
         </div>
       </div>
