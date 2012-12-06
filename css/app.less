@@ -6,7 +6,7 @@ html, body {
   width: 100%;
 
   min-width: auto;
-  min-height: auto;
+  min-height: 100%;
 }
 
 #Login {
@@ -39,7 +39,7 @@ html, body {
 
   height: 100%;
   display: inline;
-  margin: 0 10px;
+  margin: 0;
 
   // Loading state
   &.loading {
@@ -66,8 +66,8 @@ html, body {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1001;
     height: 101px;
+    z-index: 1001;
     font: normal 9px Helvetica, Arial, sans-serif;
     .info {
       padding: 25px 0 0 85px;
@@ -104,7 +104,10 @@ html, body {
     list-style-type: none;
     border-top: 1px solid #bbb;
     margin: 0 0 0 0; padding: 0;
-    padding-top: 80px;
+
+    padding-top: 91px;
+    padding-bottom: 40px !important;
+
     li {
       position: relative;
       border-bottom: 1px solid #bbb;
