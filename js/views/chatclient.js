@@ -143,6 +143,7 @@ define([
           // Render the model
           var view = new MessageView({'model':model});
           $('#history', '#' + this.id ).append( view.render() );
+          $('body').animate({ scrollTop: $(document).height() }, 'fast');
 
         },
 
