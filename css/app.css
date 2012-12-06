@@ -379,7 +379,7 @@ body {
   height: 100%;
   width: 100%;
   min-width: auto;
-  min-height: auto;
+  min-height: 100%;
 }
 #Login {
   font-size: 1.1em;
@@ -408,7 +408,7 @@ body {
 #Chat {
   height: 100%;
   display: inline;
-  margin: 0 10px;
+  margin: 0;
 }
 #Chat.loading #loading {
   display: block;
@@ -434,8 +434,8 @@ body {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 1001;
   height: 101px;
+  z-index: 1001;
   font: normal 9px Helvetica, Arial, sans-serif;
 }
 #Chat header .info {
@@ -472,7 +472,8 @@ body {
   border-top: 1px solid #bbb;
   margin: 0 0 0 0;
   padding: 0;
-  padding-top: 80px;
+  padding-top: 91px;
+  padding-bottom: 40px !important;
 }
 #Chat #history li {
   position: relative;
