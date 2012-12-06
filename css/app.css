@@ -395,6 +395,17 @@ body {
   margin-bottom: .4em;
   color: #fff;
 }
+#Login input {
+  height: 34px;
+  width: 100%;
+  border: none;
+  padding: 10px;
+  margin: 0;
+  outline: none;
+}
+#Login button {
+  height: 34px;
+}
 #Chat {
   height: 100%;
   display: inline;
