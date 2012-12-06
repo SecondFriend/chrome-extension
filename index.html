@@ -20,7 +20,7 @@
   <script type="text/template" id="tpl-chat-history">
     <ul id="history"></ul>
     <form id="chat" class="form-inline" autocomplete="off">
-      <div id="input-wrapper" class="controls">
+      <div id="input-wrapper" class="controls" id="chat-bar">
         <div id="input" class="input-append">
           <input id="chat-input" type="text" placeholder="Your chat message..." /><button class="btn" type="submit"><strong>Send</strong></button>
         </div>
@@ -41,7 +41,7 @@
       <strong>Getting started is dead easy:</strong> Simply type a nickname below and hit the button. You do not need to tell us your real name!
     </div>
     <form id="login" class="form-inline input-append">
-      <div class="control-group" id="chat-bar">
+      <div class="control-group">
         <div class="controls">
           <div class="input-append">
             <input class="span4 input-append" id="nickname" size="16" type="text" value="<%= nickname %>" placeholder="Choose a nickname..."><button class="btn" type="submit"><strong>Start chat</strong></button>
