@@ -131,6 +131,8 @@ define([
         });
         console.log("Message sent:", msg);
       });
+
+      $('body').animate({ scrollTop: $(document).height() }, 'normal');
     },
 
     'messageAdd' : function( model ){
