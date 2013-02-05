@@ -49,7 +49,7 @@ define([
           root.pubnub.uuid( function(uuid) {
             console.log('uuid: '+ uuid);
 
-            if (!App.has("uuid") || App.has("uuid") == 0) {
+            if (!App.has("uuid") || App.get("uuid") == 0) {
               console.log("Generated uuid: "+uuid);
               App.set({"uuid": uuid});
               App.save();
