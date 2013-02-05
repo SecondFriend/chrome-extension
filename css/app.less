@@ -6,7 +6,7 @@ html, body {
   width: 100%;
 
   min-width: auto;
-  min-height: auto;
+  min-height: 100%;
 }
 
 #Login {
@@ -39,7 +39,7 @@ html, body {
 
   height: 100%;
   display: inline;
-  margin: 0 10px;
+  margin: 0;
 
   // Loading state
   &.loading {
@@ -66,8 +66,8 @@ html, body {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1001;
     height: 101px;
+    z-index: 1001;
     font: normal 9px Helvetica, Arial, sans-serif;
     .info {
       padding: 25px 0 0 85px;
@@ -103,7 +103,11 @@ html, body {
     overflow: auto;
     list-style-type: none;
     border-top: 1px solid #bbb;
-    margin: 0 0 38px; padding: 0;
+    margin: 0 0 0 0; padding: 0;
+
+    padding-top: 91px;
+    padding-bottom: 40px !important;
+
     li {
       position: relative;
       border-bottom: 1px solid #bbb;
@@ -140,6 +144,7 @@ html, body {
       padding: 10px;
       margin: 0;
       outline: none;
+      border-radius: 0 !important;
     }
     button {
       z-index: 2;
@@ -148,6 +153,8 @@ html, body {
       bottom: 0;
       right:0;
       min-width: 76px !important;
+
+      border-radius: 0 !important;
     }
   }
 
