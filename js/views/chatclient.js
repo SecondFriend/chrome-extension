@@ -48,13 +48,13 @@ define([
           // Generate uuid if we don't yet have one
           root.pubnub.uuid( function(uuid) {
             console.log('uuid: '+ uuid);
-            console.log(!App.has("uuid"));
-            if (!App.has("uuid")) {
+
+            if (!App.has("uuid") || App.has("uuid") == 0) {
               console.log("Generated uuid: "+uuid);
               App.set({"uuid": uuid});
               App.save();
             }
-            console.log('app uuid: '+ App.get("uuid"));
+
             // Subscribe to PUBNUB
             root.pubnub.subscribe({
               channel   : App.get("uuid"),
