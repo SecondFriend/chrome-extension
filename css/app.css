@@ -397,13 +397,11 @@ body {
 }
 #Login input {
   height: 34px;
-  padding: 10px;
   margin: 0;
   outline: none;
 }
 #Login button {
-  height: 34px;
-  margin-top: -1px;
+  height: 44px;
 }
 #Chat {
   height: 100%;
